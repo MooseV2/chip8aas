@@ -35,13 +35,13 @@ class UI(pantograph.PantographHandler):
 
 
 	def on_key_down(self, event):
-		print(f"KEYD: {event.key_code}")
+		# print(f"KEYD: {event.key_code}")
 		if event.key_code in self.keys:
 			self.pressed_keys.add(event.key_code)
 			self.memory.root.set_io_keys(self.get_keys())
 
 	def on_key_up(self, event):
-		print(f"KEYU: {event.key_code}")
+		# print(f"KEYU: {event.key_code}")
 		if event.key_code in self.keys:
 			self.pressed_keys.remove(event.key_code)
 			self.memory.root.set_io_keys(self.get_keys())

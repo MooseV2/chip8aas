@@ -22,7 +22,7 @@ class BitOp(ManagedService):
         self.memory.set_register(x, value)
     
     # Code("8..6")
-    def BitOpSHR(self, x):
+    def BitOpSHR(self, x, y):
         # TODO: Spec may be faulty?
         value = self.memory.get_register(x)
         lsb = value & 1
@@ -31,7 +31,7 @@ class BitOp(ManagedService):
         self.memory.set_register(x, value)
 
     # Code("8..E")
-    def BitOpSHL(self, x):
+    def BitOpSHL(self, x, y):
         # TODO: Spec may be faulty?
         value = self.memory.get_register(x)
         msb = value & (0b10000000)

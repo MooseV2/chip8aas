@@ -36,7 +36,7 @@ class Misc(ManagedService):
     def GetDelayTimer(self, x):
         value = self.memory.get_timer(0)
         self.memory.set_register(x, value)
-        print(value)
+        # print(value)
 
     # Code("F.15")
     def SetDelayTimer(self, x):

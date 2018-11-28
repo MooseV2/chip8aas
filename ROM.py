@@ -8,7 +8,7 @@ class ROM:
         self.RAM.reset()
         self.instruction_parser = InstructionParser(self.service_manager)
         self.RAM.set_range(0x200, self.load_rom(fname))
-        self.RAM.print_memory()
+        # self.RAM.print_memory()
 
 
 
@@ -20,7 +20,7 @@ class ROM:
         while True:
             c = self.RAM.get_address(self.RAM.get_pc(), length=2)
             opcode = c[0] << 8 | c[1]
-            print(OP(opcode))
+            print(OP(opcode), end='/', flush=True)
             self.RAM.increment_pc()
             yield OP(opcode)
 

@@ -11,8 +11,8 @@ class Draw(ManagedService):
     def Draw(self, x, y, height):
         # TODO: Comment this hack
         
-        for i in range(16):
-            print(f"Register {i}: {self.memory.get_register(i)}")
+        # for i in range(16):
+        #     print(f"Register {i}: {self.memory.get_register(i)}")
         display_start = self.memory.get_display_start()
         x_pos = self.memory.get_register(x)
         y_pos = self.memory.get_register(y)
@@ -42,8 +42,6 @@ class Draw(ManagedService):
             new_row = old_row[0:x_pos] + new_value + old_row[min(64, x_pos+8):]
             assert len(new_row) == 64
             new_row = int(new_row, 2).to_bytes(len(new_row) // 8, byteorder='big')
-            print(display_start, y_pos, row, i)
-            print(f"NEW ROW: {new_row}")
             self.memory.set_range(display_start + (y_pos+row) * 8, new_row)
         self.memory.set_register(0xF, collision)
 

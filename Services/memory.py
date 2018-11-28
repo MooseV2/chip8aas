@@ -84,7 +84,7 @@ class Memory(Service):
     def set_range(self, start, values):
         try:
             for index, value in enumerate(values):
-                print(start+index, value)
+                # print(start+index, value)
                 self.RAM[start+index] = value
         except IndexError:
             pass
