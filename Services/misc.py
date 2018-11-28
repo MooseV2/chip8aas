@@ -20,15 +20,21 @@ class Misc(ManagedService):
 
     def WaitForKey(self, x):
         print("Blocking until key press")
-        keys = self.memory.get_io_keys()
+        # keys = self.memory.get_io_keys()
         for _ in range(500):
-            key_diff = self.memory.get_io_keys()
+            keys = self.memory.get_io_keys()
             # key_diff = new_keys ^ keys
-            if key_diff > 0: # A key was pressed
-                for shift in range(16):
-                    if ((key_diff >> shift) & 1) == 1:
-                        self.memory.set_register(x, shift)
+            if keys > 0: # A key was pressed
+                for index, bit in enumerate(bin(keys)[2:]):
+                    if bit == "1":
+                        print(bin(keys).zfill(4))
+                        self.memory.set_register(x, index)
                         return True
+
+                    # if ((key_diff >> shift) & 1) == 1:
+                    #     print(f"KEY PRESS: {shift} / {bin(shift)[2:].zfill(16)}")
+                    #     self.memory.set_register(x, shift)
+                    #     return True
         else:
             return False
 

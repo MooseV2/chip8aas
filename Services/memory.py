@@ -4,7 +4,6 @@ import _thread as thread
 from time import sleep
 
 
-
 @exposify
 class Memory(Service):
     """
@@ -44,6 +43,7 @@ class Memory(Service):
         self.I = 0
         self.KEYS = 0
         self.TIMERS = [0, 0]
+        self.REFRESH = 0
 
         self.DISPLAY_START = 0xF00
         self.DISPLAY_LENGTH = 256
@@ -124,6 +124,7 @@ class Memory(Service):
             print()
 
     def get_io_keys(self):
+        # print(bin(self.KEYS))
         return self.KEYS
 
     def set_io_keys(self, new_keys):
@@ -182,5 +183,11 @@ class Memory(Service):
 
     def get_display_length(self):
         return self.DISPLAY_LENGTH
+
+    def get_refresh(self):
+        return self.REFRESH
+
+    def set_refresh(self, status):
+        self.REFRESH = status
 # export default
 _default = Memory

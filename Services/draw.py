@@ -6,6 +6,7 @@ class Draw(ManagedService):
     # Code("00E0")
     def DispClear(self):
         self.memory.set_range(self.memory.get_display_start(), [0x00] * self.memory.get_display_length())
+        self.memory.set_refresh(True)
 
     # Code("D...")
     def Draw(self, x, y, height):
@@ -44,6 +45,7 @@ class Draw(ManagedService):
             new_row = int(new_row, 2).to_bytes(len(new_row) // 8, byteorder='big')
             self.memory.set_range(display_start + (y_pos+row) * 8, new_row)
         self.memory.set_register(0xF, collision)
+        self.memory.set_refresh(True)
 
     # Code("F.29")
     def MemSetISprite(self, x):
