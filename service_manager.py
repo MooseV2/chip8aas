@@ -23,7 +23,7 @@ class ServiceManager:
         allocated_clients = {}
         for item in available_services:
             alloc_client = next(usable_clients)
-            print(f"{item} allocated to {alloc_client}")
+            print(f"{item} allocated to {alloc_client.root.get_hostname()}")
             alloc_client.root.add_service("Services." + item)
 
         services_left = set(available_services)

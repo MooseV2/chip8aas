@@ -26,6 +26,7 @@ if __name__ == "__main__":
 	memory = rpyc.connect_by_service("memory")
 	print("Connected to memory")
 	UI = ui.UIServer(memory)
+	input("Press enter to start!")
 	UI.start()
 	webbrowser.open("http://localhost:8080")
 	rom.cycle()

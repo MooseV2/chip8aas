@@ -2,6 +2,7 @@ from rpyc import Service
 from rpyc.utils.server import ThreadedServer
 from importlib import import_module
 import traceback
+import socket
 from threading import Thread
 
 class WaitForServicesService(Service):
@@ -20,6 +21,9 @@ class WaitForServicesService(Service):
             print(f"Unable to create service {service}")
             traceback.print_exc()
             return False
+
+    def exposed_get_hostname(self):
+        return socket.gethostname()
 
 print("Waiting on services")
 run_loop = ThreadedServer(WaitForServicesService, auto_register=True)
