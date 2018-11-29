@@ -15,7 +15,7 @@ import ui
 from ROM import ROM
 import pantograph
 import webbrowser
-
+from time import sleep
 
 
 if __name__ == "__main__":
@@ -29,6 +29,7 @@ if __name__ == "__main__":
 	input("Press enter to start!")
 	UI.start()
 	webbrowser.open("http://localhost:8080")
+	sleep(0.5)
 	rom.cycle()
 
 	

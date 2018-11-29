@@ -33,14 +33,14 @@ class Flow(ManagedService):
     # Code("5...")
     def SkipEq(self, x, y):
         value1 = self.memory.get_register(x)
-        value2 = self.memory.get_register(x)
+        value2 = self.memory.get_register(y)
         if value1 == value2:
             self.memory.increment_pc()
 
     # Code("9..0")
-    def SkipNEq(self, code):
+    def SkipNEq(self, x, y):
         value1 = self.memory.get_register(x)
-        value2 = self.memory.get_register(x)
+        value2 = self.memory.get_register(y)
         if value1 != value2:
             self.memory.increment_pc()
 

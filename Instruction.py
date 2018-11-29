@@ -184,7 +184,7 @@ class InstructionParser:
     @Code("9..0")
     def SkipNEq(self, code):
         v = code.get('.XY.')
-        raise NotImplemented("Goto call not implemented")
+        self.Do("flow").SkipNEq(v["X"], v["Y"])
 
 
     @Code("A...")
